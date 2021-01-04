@@ -15,7 +15,7 @@ require "controllerFilme.php";
   session_start();
    $language ="engleza";
   include "sections/nav.sec.php"; 
-echo $_SESSION['code'];
+//echo $_SESSION['code'];
 $filme = new filme();
 ?>
 <img src="img/locuri.png" style="margin-top: -50px;margin-left: 25%;" />
@@ -65,11 +65,11 @@ $filme = new filme();
   </select>
    <select name="data" required>
                         <option value="" disabled selected>DATE</option>
-                        <option value="12:00">March 12,2019</option>
-                        <option value="13:00">March 13,2019</option>
-                        <option value="14:00">March 14,2019</option>
-                        <option value="15:00">March 15,2019</option>
-                        <option value="16:00">March 16,2019</option>
+                        <option value="12:00">March 12,2020</option>
+                        <option value="13:00">March 13,2020</option>
+                        <option value="14:00">March 14,2020</option>
+                        <option value="15:00">March 15,2020</option>
+                        <option value="16:00">March 16,2020</option>
                     </select>
   <br><br>
   <input type="submit" name="seatSelecter" value="Select">

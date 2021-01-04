@@ -22,6 +22,8 @@ if (isset($_GET['code'])) {
 	$_SESSION['code']=$_GET['code']; 
 }
 echo $_SESSION['code'];
+
+
 $filme = new filme();
 if(!empty($_GET['action'])){
 	//daca in url avem o variabila action
@@ -34,7 +36,7 @@ if(!empty($_GET['action'])){
 				$_SESSION['quantity'] = $_POST['quantity'];
 				$cartResult = $filme->getCartItemByProduct($productResult[0]['id'], $user_id);
 				//preluam cantitatea din formular si o retinem in sesiune
-				
+				header('Location:cos.php');
 				//reseteaza link-ul ca sa nu se adauge ultima cantitate stocata la fiecare refresh
 				
 				if(!empty($cartResult)){
@@ -42,14 +44,12 @@ if(!empty($_GET['action'])){
 					//modificam cantitatea din cos
 					$newQuantity = $cartResult[0]['quantity'] + $_SESSION['quantity'];
 					//la cantitatea curenta adaugam ce am retinut in sesiune
-					$filme->updateCartQuantity($newQuantity, $cartResult[0]['code']);
-					header('Location:cos.php'); 
+					$filme->updateCartQuantity($newQuantity, $cartResult[0]['id']);
 
 				}else{
 					
 					//actualizam cantitatea si in tabela cos
-					$filme->addToCart($productResult[0]['code'], $_SESSION['quantity'], $user_id);
-					header('Location:cos.php'); 
+					$filme->addToCart($productResult[0]['id'], $_SESSION['quantity'], $user_id);
 				}
 			}
 			break;
@@ -122,7 +122,7 @@ if(!empty($_GET['action'])){
 		 <td style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo $item["price_eu"]."\xE2\x82\xAc"; ?></td>
 		 <td>
 		 	<a href="cos.php?action=remove&id=<?php echo $item["cart_id"]; ?>" class="btnRemoveAction"><i class="fas fa-times-circle"></i>Delete product</a>
-		 	<span><a href="products.php" class="btnAddAction"><i class="fas fa-cart-plus"></i>Choose another product</a></span>
+		 	
 		 </td>
 		 </td>
  	</tr>
@@ -151,9 +151,8 @@ if(!empty($_GET['action'])){
 
  <div><a href="movies.php" style="text-decoration: none; font-size: 20px;">Go back to shop</a></div>
  <div><a href="logout.php" style="text-decoration: none; font-size: 20px; ">Logout</a></div>
- <div><a href="order.php" style="float: right; font-size: 20px;color: green;" class="btnPlaceOrder">Place order</a></div>
+ <div><a href="locuri.php" style="float: right; font-size: 20px;color: green;" class="btnPlaceOrder">Select your seats</a></div>
 
-<div><a href="locuri.php" style="text-decoration: none; font-size: 20px;">Select your seats</a></div>
 
  </body>
  </html>

@@ -50,7 +50,7 @@ $language = "engleza";
 				
 				
 				<div class="product-image">
-					<a href="page.php?page=product&code=<?php echo $product_array[$key]['code']?>" class="product">
+					<a href="page.php?page=product&id=<?php echo $product_array[$key]['id']?>" class="product">
 						<img src="<?php echo $product_array[$key]["image"]; ?>" class="product-image">
 					</a>
 				</div>

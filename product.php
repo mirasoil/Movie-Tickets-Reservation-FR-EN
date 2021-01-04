@@ -16,11 +16,11 @@ include 'sections/nav.sec.php';
 
 $filme = new filme();
 
-if(isset($_GET['code'])) { //daca in link este setat id-ul il preluam si pe baza lui afisam datele produsului
+if(isset($_GET['id'])) { //daca in link este setat id-ul il preluam si pe baza lui afisam datele produsului
 	
-	$query = 'SELECT * FROM filme WHERE code=?';
+	$query = 'SELECT * FROM filme WHERE id=?';
 	//definim query-ul care va cauta produsul in baza de date dupa id-ul introdus
-	$product_array = $filme->getMovieByCode($_GET['code']);
+	$product_array = $filme->getMovieById($_GET['id']);
 	//in variabila $product_array apelam functia getProductById definita in shoppingCart.php
 
 	if(!empty($product_array)){
@@ -41,7 +41,7 @@ if(isset($_GET['code'])) { //daca in link este setat id-ul il preluam si pe baza
 				<div class="description">
 					 <?php echo $product_array[$key]['descriere_en']?>
 				</div>
-			<form method="POST" action="cos.php?action=add&code=<?php echo $product_array[$key]["code"];?>">
+			<form method="POST" action="cos.php?action=add&id=<?php echo $product_array[$key]["id"];?>">
 				<div class="cart-action" >
 					<input type="text" name="quantity" value="1" size="2"/>
 					<input type="submit"  value="Buy tickets" class="btnAddToCart"/>
