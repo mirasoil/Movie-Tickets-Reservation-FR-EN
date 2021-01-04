@@ -65,11 +65,11 @@ $filme = new filme();
   </select>
    <select name="data" required>
                         <option value="" disabled selected>DATE</option>
-                        <option value="12-3">March 12,2019</option>
-                        <option value="13-3">March 13,2019</option>
-                        <option value="14-3">March 14,2019</option>
-                        <option value="15-3">March 15,2019</option>
-                        <option value="16-3">March 16,2019</option>
+                        <option value="12:00">March 12,2019</option>
+                        <option value="13:00">March 13,2019</option>
+                        <option value="14:00">March 14,2019</option>
+                        <option value="15:00">March 15,2019</option>
+                        <option value="16:00">March 16,2019</option>
                     </select>
   <br><br>
   <input type="submit" name="seatSelecter" value="Select">

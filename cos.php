@@ -2,13 +2,13 @@
 require_once 'controllerFilme.php';
 session_start();
 $language="engleza";
-function x($array){
-	echo '<pre>';
-	print_r($array);
-	echo '</pre>';
-}
-//x($_SESSION);
-$_SESSION['status'] = "";
+// function x($array){
+// 	echo '<pre>';
+// 	print_r($array);
+// 	echo '</pre>';
+// }
+// //x($_SESSION);
+// $_SESSION['status'] = "";
 if(!isset($_SESSION['loggedin'])){
 	header('Location:login.html'); //daca utilizatorul nu e logat nu poate accesa cosul
 	//ATENTIE-functioneaza doar la inceput, cand sesiunea nu este pornita. Daca ies din cos cu logout si intru tot in cos, in aceeasi fila, cosul va merge
@@ -28,7 +28,7 @@ if(!empty($_GET['action'])){
 	switch($_GET['action']){
 		case 'add':
 			if(!empty($_POST['quantity'])){
-				$_SESSION['status']="pas1";
+				
 				$productResult = $filme->getMovieByCode($_GET['code']);
 				//in product-result stocam produsul returnat cu codul preluat din link
 				$_SESSION['quantity'] = $_POST['quantity'];
@@ -38,15 +38,15 @@ if(!empty($_GET['action'])){
 				//reseteaza link-ul ca sa nu se adauge ultima cantitate stocata la fiecare refresh
 				
 				if(!empty($cartResult)){
-					$_SESSION['status']="pas2";
+					
 					//modificam cantitatea din cos
 					$newQuantity = $cartResult[0]['quantity'] + $_SESSION['quantity'];
 					//la cantitatea curenta adaugam ce am retinut in sesiune
-					$filme->updateCartQuantity($newQuantity, $cartResult[0]['id']);
+					$filme->updateCartQuantity($newQuantity, $cartResult[0]['code']);
 					header('Location:cos.php'); 
 
 				}else{
-					$_SESSION['status']="pas3";
+					
 					//actualizam cantitatea si in tabela cos
 					$filme->addToCart($productResult[0]['code'], $_SESSION['quantity'], $user_id);
 					header('Location:cos.php'); 
