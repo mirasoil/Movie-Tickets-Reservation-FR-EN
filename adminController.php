@@ -27,7 +27,7 @@ class Admin extends DBController{
 				<input type="file" name="product-image" id="pi"/>
 				<br>
 				<label for="pp">Movie Price</label>
-				<input type="text" name="product-price"value="<?php echo $productResult[$key]["price"]; ?>" id="pp"/>
+				<input type="text" name="product-price"value="<?php echo $productResult[$key]["price_eu"]; ?>" id="pp"/>
 				<br>
 				<label for="pd">Movie Description</label>
 				<textarea rows="4" cols="50" name="product-desc" id="pd"><?php echo $productResult[$key]["descriere_en"]; ?></textarea>

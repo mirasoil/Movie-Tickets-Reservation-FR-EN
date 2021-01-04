@@ -16,7 +16,9 @@
                 <li class="nav-item">
                     <a href="filme.php" class="nav-link active">Filme</a>
                 </li>
-                
+                <li class="nav-item">
+                    <a href="schedule.php" class="nav-link active">Orar</a>
+                </li>
                 <li class="nav-item">
                     <a href="movies.php" class="nav-link active">Engleza</a>
                 </li>
@@ -35,6 +37,9 @@
                     <a href="movies.php" class="nav-link active">Movies</a>
                 </li>
                 <li class="nav-item">
+                    <a href="schedule.php" class="nav-link active">Schedule</a>
+                </li>
+                <li class="nav-item">
                     <a href="filme.php" class="nav-link active">Romanian</a>
                 </li>
                 
@@ -50,6 +55,9 @@
 </a></li>
                 <li class="nav-item">
                     <a href="films.php" class="nav-link active">Films</a>
+                </li>
+                <li class="nav-item">
+                    <a href="schedule.php" class="nav-link active">Horaire</a>
                 </li>
                 <li class="nav-item">
                     <a href="filme.php" class="nav-link active">Roumain</a>
@@ -74,6 +82,7 @@
       if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
           
           echo '
+          <li><a href="cos.php"> Cos</a></li>
           <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';//apare doar daca esti logat
       }else {
         echo '<li><a href="registration.html"><span class="glyphicon glyphicon-user"></span>Inregistrare</a></li>
@@ -89,6 +98,7 @@
       if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
           
           echo '
+          <li><a href="cos.php">Cart</a></li>
           <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';//apare doar daca esti logat
       }else {
         echo '<li><a href="registration.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -104,7 +114,9 @@
       if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
           
           echo '
+          <li><a href="cos.php"></span>Panier</a></li>
           <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';//apare doar daca esti logat
+
       }else {
         echo '<li><a href="registration.html"><span class="glyphicon glyphicon-user"></span>Créer un compte</a></li>
       <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>Se connecter</a></li>'; //apar in orice alt caz

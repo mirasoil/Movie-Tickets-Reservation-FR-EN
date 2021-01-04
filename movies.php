@@ -50,7 +50,7 @@ $language = "engleza";
 				
 				
 				<div class="product-image">
-					<a href="page.php?page=product&id=<?php echo $product_array[$key]['id']?>" class="product">
+					<a href="page.php?page=product&code=<?php echo $product_array[$key]['code']?>" class="product">
 						<img src="<?php echo $product_array[$key]["image"]; ?>" class="product-image">
 					</a>
 				</div>
@@ -63,7 +63,7 @@ $language = "engleza";
 				<input type="text" name="quantity" value="1" size="2"/>
 				
 
-				<input type="submit"  value="Reserve" class="btnAddAction" class="btnAddAction" style="margin-right: 20px;"/>
+				<button class="btnAddAction" style="margin-right: 20px;"> Reserve </button>
 		
 			</div>
 			</form>

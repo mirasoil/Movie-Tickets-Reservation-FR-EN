@@ -29,7 +29,7 @@ class filme extends DBController{
 	}
 	function getUserCartItem($user_id){
 		//returneaza produsul adaugat in cos de utilizatorul care este logat la momentul respectiv
-		$query = "SELECT filme.*, tbl_cart.id as cart_id, tbl_cart.quantity, tbl_cart.product_id FROM filme, tbl_cart WHERE filme.id=tbl_cart.product_id AND tbl_cart.user_id=?";
+		$query = "SELECT filme.*, tbl_cart.id as cart_id, tbl_cart.quantity, tbl_cart.product_id FROM filme, tbl_cart WHERE filme.code=tbl_cart.product_id AND tbl_cart.user_id=?";
 		//selecteaza din tabela produse tot, din tbl_cart doar id-ul, cantitatea si product_id-ul pentru conditia: id-ul produsului din tabela produse trebuie sa corespunda cu id-ul produsului din tabela cos si id-ul utilizatorului sa fie acelasi cu cel din sesiune
 
 		$params = array(
@@ -48,7 +48,7 @@ class filme extends DBController{
 
 		$params = array(
 			array(
-				"param_type" => "s",
+				"param_type" => "i",
 				"param_value" => $product_code
 			)
 		);
@@ -78,14 +78,14 @@ class filme extends DBController{
 	}
 
 
-	function addToCart($product_id, $quantity, $user_id){
+	function addToCart($product_code, $quantity, $user_id){
 		//adauga produsele in cos pentru utilizatorul cu id-ul curent
 		$query = "INSERT INTO tbl_cart(product_id, quantity, user_id) VALUES (?, ?, ?)";
 
 		$params = array(
 			array(
 				"param_type" => "i",
-				"param_value" => $product_id
+				"param_value" => $product_code
 			),
 			array(
 				"param_type" => "i",
@@ -101,8 +101,8 @@ class filme extends DBController{
 	}
 
 
-	function updateCartQuantity($quantity, $cart_id){
-		$query = "UPDATE tbl_cart SET quantity=? WHERE id=?";
+	function updateCartQuantity($quantity, $product_id){
+		$query = "UPDATE tbl_cart SET quantity=? WHERE product_id=?";
 
 		$params = array(
 			array(
@@ -111,7 +111,7 @@ class filme extends DBController{
 			),
 			array(
 				"param_type" => "i",
-				"param_value" => $cart_id
+				"param_value" => $product_id
 			)
 		);
 
@@ -145,8 +145,45 @@ class filme extends DBController{
 
 		$this->updateDB($query, $params);
 	}
+
+function addSeat($rand, $loc, $id_film, $data){
+ 	$query = "INSERT INTO locuri(rand, loc, id_film, data) VALUES (?, ?, ?, ?)";
+
+		$params = array(
+			array(
+				"param_type" => "s",
+				"param_value" => $rand
+			),
+			array(
+				"param_type" => "i",
+				"param_value" => $loc
+			),
+			array(
+				"param_type" => "i",
+				"param_value" => $id_film
+			),
+			array(
+				"param_type" => "s",
+				"param_value" => $data
+			)
+		);
+
+		$this->updateDB($query, $params);
 }
 
+function getMovieName($code){
+	$query = "SELECT name FROM filme WHERE code=?";
 
+	$params = array(
+		array(
+			"param_type" => "i",
+			"param_value" => $code
+		)
+	);
+	$cartResult = $this->getDBResult($query, $params);
+		return $cartResult;
 
+}
+
+}
  ?>
