@@ -82,7 +82,7 @@
       if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
           
           echo '
-          <li><a href="cos.php"> Cos</a></li>
+          <li><a href="cos_ro.php"> Cos</a></li>
           <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';//apare doar daca esti logat
       }else {
         echo '<li><a href="registration.html"><span class="glyphicon glyphicon-user"></span>Inregistrare</a></li>
@@ -114,7 +114,7 @@
       if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
           
           echo '
-          <li><a href="cos.php"></span>Panier</a></li>
+          <li><a href="cos_fr.php"></span>Panier</a></li>
           <li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>';//apare doar daca esti logat
 
       }else {

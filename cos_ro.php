@@ -1,7 +1,7 @@
 <?php 
 require_once 'controllerFilme.php';
 session_start();
-$language="engleza";
+$language="romana";
 // function x($array){
 // 	echo '<pre>';
 // 	print_r($array);
@@ -87,7 +87,7 @@ if(!empty($_GET['action'])){
  	<?php include 'sections/nav.sec.php'; ?>
   <div id="shopping-cart">
  	<div class="txt-heading">
- 		<div class="txt-heading-label" style="font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 32px; color: white;">My Cart</div>
+ 		<div class="txt-heading-label" style="font-family: 'Times New Roman', Times, serif; font-weight: bold; font-size: 32px; color: white;">Rezervarile mele</div>
     		
  	</div>
 
@@ -103,11 +103,10 @@ if(!empty($_GET['action'])){
   <table cellpadding="10" cellspacing="1">
 	 <tbody>
 	 <tr>
-		 <th style="text-align: left;"><strong>Name</strong></th>
-		 <th style="text-align: left;"><strong>Code</strong></th>
-		 <th style="text-align: right;"><strong>Quantity</strong></th>
-		 <th style="text-align: right;"><strong>Price</strong></th>
-		 <th style="text-align: center;"><strong>Action</strong></th>
+		 <th style="text-align: left;"><strong>Nume film</strong></th>
+		 <th style="text-align: right;"><strong>Bilete</strong></th>
+		 <th style="text-align: right;"><strong>Pret</strong></th>
+		 <th style="text-align: center;"><strong>Actiune</strong></th>
 	 </tr>	
 
  <?php 
@@ -116,12 +115,12 @@ if(!empty($_GET['action'])){
  ?>
 
 	<tr>
-		 <td style="text-align: left; border-bottom: #F0F0F0 1px solid;"><a href="page.php?page=product&code=<?php echo $item['product_id']; ?>" class="devices"><strong><?php echo $item["name"]; ?></strong></a></td>
-		 <td style="text-align: left; border-bottom: #F0F0F0 1px solid;"><?php echo $item["code"]; ?></td>
+		 <td style="text-align: left; border-bottom: #F0F0F0 1px solid;"><a href="page.php?page=product&code=<?php echo $item['product_id']; ?>" class="devices"><strong><?php echo $item["nume"]; ?></strong></a></td>
+		 
 		 <td style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo $item["quantity"]; ?></td>
-		 <td style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo $item["price_eu"]."\xE2\x82\xAc"; ?></td>
+		 <td style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo $item["price"]." RON"; ?></td>
 		 <td>
-		 	<a href="cos.php?action=remove&id=<?php echo $item["cart_id"]; ?>" class="btnRemoveAction"><i class="fas fa-times-circle"></i>Delete product</a>
+		 	<a href="cos.php?action=remove&id=<?php echo $item["cart_id"]; ?>" class="btnRemoveAction"><i class="fas fa-times-circle"></i>Sterge biletul</a>
 		 	
 		 </td>
 		 </td>
@@ -129,14 +128,14 @@ if(!empty($_GET['action'])){
 
 
 <?php 
-	$item_total += ($item['price_eu'] * $item['quantity']);
+	$item_total += ($item['price'] * $item['quantity']);
 	$_SESSION['pret_total']=$item_total;
 }
  ?>
 	<tr>
 		 <td colspan="3" align=right><strong>Total:</strong></td>
-		 <td align=right><strong><?php echo $item_total."\xE2\x82\xAc"; ?></strong></td>
-		 <td><a id="btnEmpty" href="cos.php?action=empty"><i class="fas fa-trash"></i>Empty Cart</a></td>
+		 <td align=right><strong><?php echo $item_total." RON"; ?></strong></td>
+		 <td><a id="btnEmpty" href="cos.php?action=empty"><i class="fas fa-trash"></i>Goleste cosul</a></td>
  	</tr>
  	</tbody>
  </table>
@@ -144,14 +143,14 @@ if(!empty($_GET['action'])){
 <?php 
  }else{
  	//daca nu exista nimic in cos, afisam un mesaj prietenos 
- 	echo "<h1 style='text-align: center; padding: 30px;'>Your shopping cart is empty, please check our <a href=\"products.php\" class='devices'>products</a> ! ;) </h1>
+ 	echo "<h1 style='text-align: center; padding: 30px;'>Cosul tau este gol ! Rezerva acum <a href=\"filme.php\" class='devices'>bilete</a> ! ;) </h1>
  	";
  }
 ?>
 
- <div><a href="movies.php" style="text-decoration: none; font-size: 20px;">Go back to shop</a></div>
- <div><a href="logout.php" style="text-decoration: none; font-size: 20px; ">Logout</a></div>
- <div><a href="locuri.php" style="float: right; font-size: 20px;color: green;" class="btnPlaceOrder">Select your seats</a></div>
+ <div><a href="filme.php" style="text-decoration: none; font-size: 20px;">Mergi la filme</a></div>
+ <div><a href="logout.php" style="text-decoration: none; font-size: 20px; ">Delogare</a></div>
+ <div><a href="locuri.php" style="float: right; font-size: 20px;color: green;" class="btnPlaceOrder">Alege locurile</a></div>
 
 
  </body>
