@@ -1,0 +1,7 @@
+Proiectul consta in crearea unei aplicatii web pentru o firma de cinema "Silver Screen", care doreste eficientizarea rezervarii de bilete la film de catre oricine, cu conditia de creare a unui cont.
+Clasele de echivalenta se aplica asupra numarului maxim de bilete rezervate de un singur client. Acesta trebuie sa fie in intervalul (1,50).
+Partea de admin permite personalului sa interactioneze cu baza de date printr-o interfata grafica foarte usor de folosit. Fiecarui angajat care va avea 
+acces la platforma i se va atribui un cont special cu care se va putea loga si va fi instruit sa foloseasca platforma conform pasilor din specificatii.
+Tot din partea de admin, personalul are acces la butonul de help care ii va redirectiona pe pagina cu detaliile persoanelor din echipa de developers.
+De pe aceasta pagina, ei au posibilitatea de a descarca fisierul de specificatii, care descrie amanuntit facilitatile aplicatiei.
+Pentru partea de utilizator, butonul de help ii redirectioneaza sre o pagina cu detalii despre cum isi pot crea un cont si cum pot rezerva un bilet la filmul dorit.
