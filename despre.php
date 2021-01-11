@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,6 @@
 </head>
 <body>
 <?php 
-  session_start();
   $language = "romana";
   include "sections/nav.sec.php"; 
 ?>
@@ -60,7 +60,7 @@
                             <p class="about">
                                 Programe filme, rezervari, totul in doar 2 pasi simpli !
                             </p>
-                            <a class="btnn"onclick="window.open('SpecsPDF.pdf', '_blank', 'fullscreen=yes'); return false;">Specificatii</a>
+                            <a href="filme.php" class="btnn">Rezerva</a>
                             
 
                         </div>

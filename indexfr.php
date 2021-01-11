@@ -1,4 +1,5 @@
 
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,6 @@
 
 <body>
 <?php 
-  session_start();
 $language ="franceza";
   include "sections/nav.sec.php"; 
 

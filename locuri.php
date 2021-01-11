@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,14 +13,13 @@
 <body>
 <?php 
 require "controllerFilme.php";
-  session_start();
    $language ="engleza";
   include "sections/nav.sec.php"; 
 //echo $_SESSION['code'];
 $filme = new filme();
 ?>
 <img src="img/locuri.png" style="margin-top: -50px;margin-left: 25%;" />
-<form style="text-align: center;margin: 20px;" action="locuri.php" method="POST">
+<form style="text-align: center;margin: 20px;" action="order.php" method="POST">
   <label for="movie">Choose a rand:</label>
   <select name="rand" id="rand">
     <option value="A">A</option>
@@ -79,15 +79,7 @@ $filme = new filme();
 <br>
 <br>
 
-<?php 
 
-$filme->addSeat( $_POST['rand'], $_POST['loc'], $_SESSION['code'], $_POST['data']);
-if (isset($_POST['rand']) && isset($_POST['loc'])) {
-$_SESSION['rand'] = $_POST['rand'];
-$_SESSION['loc'] = $_POST['loc'];
-$_SESSION['data_film'] = $_POST['data'];
-}
-?>
 
 
 <?php include "sections/footer.sec.php" ?>

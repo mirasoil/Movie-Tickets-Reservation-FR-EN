@@ -25,9 +25,9 @@ if (isset($_GET['code'])) {
 
 
 $filme = new filme();
-if(!empty($_GET['action'])){
+if(!empty($_GET['actionFr'])){
 	//daca in url avem o variabila action
-	switch($_GET['action']){
+	switch($_GET['actionFr']){
 		case 'add':
 			if(!empty($_POST['quantity'])){
 				
@@ -36,7 +36,7 @@ if(!empty($_GET['action'])){
 				$_SESSION['quantity'] = $_POST['quantity'];
 				$cartResult = $filme->getCartItemByProduct($productResult[0]['id'], $user_id);
 				//preluam cantitatea din formular si o retinem in sesiune
-				header('Location:cos.php');
+				header('Location:cos_fr.php');
 				//reseteaza link-ul ca sa nu se adauge ultima cantitate stocata la fiecare refresh
 				
 				if(!empty($cartResult)){
@@ -120,7 +120,7 @@ if(!empty($_GET['action'])){
 		 <td style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo $item["quantity"]; ?></td>
 		 <td style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo $item["price_eu"]."\xE2\x82\xAc"; ?></td>
 		 <td>
-		 	<a href="cos.php?action=remove&id=<?php echo $item["cart_id"]; ?>" class="btnRemoveAction"><i class="fas fa-times-circle"></i>Supprimer le film</a>
+		 	<a href="cos_fr.php?actionFr=remove&id=<?php echo $item["cart_id"]; ?>" class="btnRemoveAction"><i class="fas fa-times-circle"></i>Supprimer le film</a>
 		 	
 		 </td>
 		 </td>
@@ -129,13 +129,13 @@ if(!empty($_GET['action'])){
 
 <?php 
 	$item_total += ($item['price_eu'] * $item['quantity']);
-	$_SESSION['pret_total']=$item_total;
+	$_SESSION['pret_total_fr']=$item_total;
 }
  ?>
 	<tr>
 		 <td colspan="3" align=right><strong>Totale:</strong></td>
 		 <td align=right><strong><?php echo $item_total."\xE2\x82\xAc"; ?></strong></td>
-		 <td><a id="btnEmpty" href="cos.php?action=empty"><i class="fas fa-trash"></i>Panier vide</a></td>
+		 <td><a id="btnEmpty" href="cos_fr.php?actionFr=empty"><i class="fas fa-trash"></i>Panier vide</a></td>
  	</tr>
  	</tbody>
  </table>
@@ -143,12 +143,12 @@ if(!empty($_GET['action'])){
 <?php 
  }else{
  	//daca nu exista nimic in cos, afisam un mesaj prietenos 
- 	echo "<h1 style='text-align: center; padding: 30px;'>Votre panier est vide ! Reserve maintenant<a href=\"films.php\" class='devices'>billets</a> ! ;) </h1>
+ 	echo "<h1 style='text-align: center; padding: 30px;'>Votre panier est vide ! Reserve maintenant <a href=\"films.php\" class='devices'> billets</a> ! ;) </h1>
  	";
  }
 ?>
 
- <div><a href="filme.php" style="text-decoration: none; font-size: 20px;">Voir des films</a></div>
+ <div><a href="films.php" style="text-decoration: none; font-size: 20px;">Voir des films</a></div>
  <div><a href="logout.php" style="text-decoration: none; font-size: 20px; ">Déconnecter</a></div>
  <div><a href="locuri.php" style="float: right; font-size: 20px;color: green;" class="btnPlaceOrder">Choisissez des sièges</a></div>
 

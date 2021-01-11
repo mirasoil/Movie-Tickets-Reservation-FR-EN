@@ -38,7 +38,7 @@ session_start();
 ?>
 <!--Daca utilizatorul doreste sa stie mai multe despre produs, va face click pe nume sau poza acestuia si va fi redirectionat pe pagina product.php?code=... -->
 		 <div class="product-item">
-			<form method="POST" action="cos.php?action=add&code=<?php echo $product_array[$key]["code"];?>">
+			<form method="POST" action="cos_fr.php?actionFr=add&code=<?php echo $product_array[$key]["code"];?>">
 				<div class="product-title">
 					
 						<strong>

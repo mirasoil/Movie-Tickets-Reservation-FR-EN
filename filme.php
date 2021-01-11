@@ -43,7 +43,7 @@ $language = "romana";
 ?>
 <!--Daca utilizatorul doreste sa stie mai multe despre produs, va face click pe nume sau poza acestuia si va fi redirectionat pe pagina product.php?code=... -->
 		 <div class="product-item">
-			<form method="POST" action="cos.php?action=add&code=<?php echo $product_array[$key]["code"];?>">
+			<form method="POST" action="cos_ro.php?actionRo=add&code=<?php echo $product_array[$key]["code"];?>">
 				<div class="product-title">
 						 <strong>
 						 <a href="pagero.php?page=productro&id=<?php echo $product_array[$key]['id']?>" class="product"><?php echo $product_array[$key]["nume"]; ?></a></strong>
@@ -59,7 +59,7 @@ $language = "romana";
 					<strong><?php echo $product_array[$key]["price"]." RON"; ?></strong>
 				</div>
 				<div class="cart-action">
-				<input type="text" name="quantity" value="1" size="2"/>
+				<input type="text" name="quantity" value="1" size="2" min="1" max="50"/>
 				
 
 				<input type="submit"  value="Rezerva" class="btnAddAction" style="margin-right: 20px;" />

@@ -25,18 +25,18 @@ if (isset($_GET['code'])) {
 
 
 $filme = new filme();
-if(!empty($_GET['action'])){
+if(!empty($_GET['actionRo'])){
 	//daca in url avem o variabila action
-	switch($_GET['action']){
+	switch($_GET['actionRo']){
 		case 'add':
-			if(!empty($_POST['quantity'])){
+			if(!empty($_POST['quantity']) && $_POST['quantity'] < 50 && $_POST['quantity'] > 0){
 				
 				$productResult = $filme->getMovieByCode($_GET['code']);
 				//in product-result stocam produsul returnat cu codul preluat din link
 				$_SESSION['quantity'] = $_POST['quantity'];
 				$cartResult = $filme->getCartItemByProduct($productResult[0]['id'], $user_id);
 				//preluam cantitatea din formular si o retinem in sesiune
-				header('Location:cos.php');
+				header('Location:cos_ro.php');
 				//reseteaza link-ul ca sa nu se adauge ultima cantitate stocata la fiecare refresh
 				
 				if(!empty($cartResult)){
@@ -51,7 +51,7 @@ if(!empty($_GET['action'])){
 					//actualizam cantitatea si in tabela cos
 					$filme->addToCart($productResult[0]['id'], $_SESSION['quantity'], $user_id);
 				}
-			}
+			}else { echo '<script>alert("Numarul de bilete trebuie sa fie intre 0 si 50!!")</script>'; }
 			break;
 
 			case 'remove':
@@ -72,7 +72,7 @@ if(!empty($_GET['action'])){
  <!DOCTYPE html>
  <html>
  <head>
- 	<title>Shopping Cart</title>
+ 	<title>Cos </title>
  	<meta charset="utf-8">
 	<link rel="stylesheet" href="styles/main.css" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -120,7 +120,7 @@ if(!empty($_GET['action'])){
 		 <td style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo $item["quantity"]; ?></td>
 		 <td style="text-align: right; border-bottom: #F0F0F0 1px solid;"><?php echo $item["price"]." RON"; ?></td>
 		 <td>
-		 	<a href="cos.php?action=remove&id=<?php echo $item["cart_id"]; ?>" class="btnRemoveAction"><i class="fas fa-times-circle"></i>Sterge biletul</a>
+		 	<a href="cos_ro.php?actionRo=remove&id=<?php echo $item["cart_id"]; ?>" class="btnRemoveAction"><i class="fas fa-times-circle"></i>Sterge biletul</a>
 		 	
 		 </td>
 		 </td>
@@ -129,13 +129,13 @@ if(!empty($_GET['action'])){
 
 <?php 
 	$item_total += ($item['price'] * $item['quantity']);
-	$_SESSION['pret_total']=$item_total;
+	$_SESSION['pret_total_ro']=$item_total;
 }
  ?>
 	<tr>
 		 <td colspan="3" align=right><strong>Total:</strong></td>
 		 <td align=right><strong><?php echo $item_total." RON"; ?></strong></td>
-		 <td><a id="btnEmpty" href="cos.php?action=empty"><i class="fas fa-trash"></i>Goleste cosul</a></td>
+		 <td><a id="btnEmpty" href="cos_ro.php?actionRo=empty"><i class="fas fa-trash"></i>Goleste cosul</a></td>
  	</tr>
  	</tbody>
  </table>
